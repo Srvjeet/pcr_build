@@ -16,7 +16,7 @@ const index_1 = require("./backend/utility/index");
 const iooptions = {
     serveClient: process.env.ENV_TEST ? true : false,
     path: "/socket.io",
-    cors: { origin: process.env.ENV_TEST ? "http://localhost:3000" : `https://${process.env.SITE_URI}` },
+    cors: { origin: process.env.ENV_TEST ? "http://di-devs.com" : `https://${process.env.SITE_URI}` },
 };
 exec("node logetcCreate.js", (error, stdout, stderr)=>{
     if (error){
@@ -55,7 +55,7 @@ const corsOptions = {
     allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
     credentials: true,
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-    origin: process.env.ENV_TEST ? "http://localhost:3000" : [`https://${process.env.SITE_URI}`, 'https://status-check.testweb-demo.com'],
+    origin: process.env.ENV_TEST ? "http://di-devs.com" : [`https://${process.env.SITE_URI}`, 'https://status-check.testweb-demo.com'],
     preflightContinue: false,
 };
 app.use(cors(corsOptions));
