@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { withRouter } from "react-router-dom";
 import axios from 'axios';
 import styled from 'styled-components';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
 import Topbar from '../../../layouts/ClientMain/components/Topbar/Topbar';
 
@@ -139,10 +137,9 @@ const SurveyClient = () => {
     event.preventDefault();
     console.log(values);
 
-    axios.post('http://di-devs.com/api/eventsurvey', values)
+    axios.post('http://di-devs.com:8080/api/eventsurvey', values)
       .then(res => {
         console.log("Data sent Successfully!");
-        toast.success("Thank you for your valuable Feedback 🙇");
         // Reset the form
         setValues({
           fname: '',
@@ -162,7 +159,6 @@ const SurveyClient = () => {
       })
       .catch(err => {
         console.log(err);
-        toast.error("Oops something went wrong!");
       });
   };
 

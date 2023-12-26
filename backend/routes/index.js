@@ -85,7 +85,7 @@ router.get('/customers', async (req, res) => {
   
       // Fetch recipient data from the database
       const [data] = await db.query(`
-        SELECT email, lastName, firstName FROM CUSTOMERS;
+        SELECT email, lastName, firstName FROM customers;
       `);
   
       const emailList = data;
@@ -174,7 +174,7 @@ router.delete('/DeleteSurveys/:name', async(req,res)=>{
 })
 router.delete('/RemoveMapping/:name', async(req,res)=>{
   try{
-    await db.query(`DELETE FROM SURVEYS WHERE SURVEY_NAME = ${req.params.name}`).then(result=>res.send(result));
+    await db.query(`DELETE FROM SURVEYS WHERE SURVEY_NAME = "${req.params.name}"`).then(result=>res.send(result));
   }catch {
     res.send('error in removing from map');
 }

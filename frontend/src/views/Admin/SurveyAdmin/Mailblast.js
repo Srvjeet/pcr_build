@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from "react-router-dom";
 import axios from 'axios';
 import styled from 'styled-components';
+import * as Commons from '../../../common/common';
 
 const FeedbackContainer = styled.div`
   max-width: 1000px;
@@ -77,7 +78,7 @@ function Mailblast() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://di-devs.com/api/customers');
+        const response = await axios.get(`${Commons.baseURL}/customers`);
         console.log('Customer Data:', response.data);
         setCustomers(response.data);
       } catch (error) {
@@ -95,7 +96,7 @@ function Mailblast() {
       const message = prompt('Enter email message:');
   
  
-      const response = await axios.post('http://di-devs.com/api/send-bulk-email', { subject, message });
+      const response = await axios.post(`${Commons.baseURL}/send-bulk-email`, { subject, message });
       alert("Mailed Successfully!"); 
     } catch (error) {
       console.error('Error sending bulk email:', error);
